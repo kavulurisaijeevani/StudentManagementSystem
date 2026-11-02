@@ -1,24 +1,17 @@
-
-
-import os
-from pathlib import Path
-
 import mysql.connector
+import os
 from dotenv import load_dotenv
 
-
-# Load database credentials from the .env file
-env_path = Path(__file__).with_name(".env")
-load_dotenv(dotenv_path=env_path)
-
+load_dotenv()
 
 def get_connection():
-
     connection = mysql.connector.connect(
         host=os.getenv("DB_HOST"),
+        port=int(os.getenv("DB_PORT", 3306)),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD"),
-        database=os.getenv("DB_NAME")
+        database=os.getenv("DB_NAME"),
+        ssl_disabled=False
     )
 
     return connection
