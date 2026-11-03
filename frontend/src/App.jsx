@@ -2,6 +2,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+// Deployed FastAPI backend
+const API_BASE_URL = 'https://student-management-api-qau5.onrender.com'
+
 function App() {
 
   const [students, setStudents] = useState([])
@@ -29,19 +32,24 @@ function App() {
     try {
       setError('')
 
-      const response = await fetch(
-        'https://student-management-api-qau5.onrender.com'
-      )
+      const response = await fetch(`${API_BASE_URL}/students`)
 
       if (!response.ok) {
         throw new Error('Unable to fetch student records')
       }
 
       const data = await response.json()
+
+      // Ensure API returns an array
+      if (!Array.isArray(data)) {
+        throw new Error('Invalid student data received from server')
+      }
+
       setStudents(data)
 
     } catch (error) {
       setError(error.message)
+      setStudents([])
 
     } finally {
       setLoading(false)
@@ -120,8 +128,8 @@ function App() {
 
     try {
       const url = editingId
-        ? `http://127.0.0.1:8000/students/${editingId}`
-        : 'http://127.0.0.1:8000/students'
+        ? `${API_BASE_URL}/students/${editingId}`
+        : `${API_BASE_URL}/students`
 
       const method = editingId ? 'PUT' : 'POST'
 
@@ -173,7 +181,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/students/${student.id}`,
+        `${API_BASE_URL}/students/${student.id}`,
         { method: 'DELETE' }
       )
 
@@ -211,11 +219,15 @@ function App() {
         .toLowerCase()
         .includes(searchText) ||
 
-      student.name.toLowerCase().includes(searchText) ||
+      String(student.name || '')
+        .toLowerCase()
+        .includes(searchText) ||
 
-      student.email.toLowerCase().includes(searchText) ||
+      String(student.email || '')
+        .toLowerCase()
+        .includes(searchText) ||
 
-      (student.department || '')
+      String(student.department || '')
         .toLowerCase()
         .includes(searchText)
     )
@@ -338,18 +350,14 @@ function App() {
 
                   <tr key={student.id}>
 
-                    {/* Serial Number */}
                     <td>{index + 1}</td>
 
-                    {/* Customized Student ID */}
                     <td>{student.student_code || 'Not assigned'}</td>
 
-                    {/* Student Details */}
                     <td>{student.name}</td>
                     <td>{student.email}</td>
                     <td>{student.department}</td>
 
-                    {/* Action Buttons */}
                     <td className="action-buttons">
 
                       <button
