@@ -30,7 +30,7 @@ function App() {
       setError('')
 
       const response = await fetch(
-        'http://127.0.0.1:8000/students'
+        'https://student-management-api-qau5.onrender.com'
       )
 
       if (!response.ok) {
