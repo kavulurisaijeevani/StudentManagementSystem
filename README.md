@@ -219,3 +219,11 @@ Cloud deployment and online database integration are planned as future improveme
 GitHub: https://github.com/kavulurisaijeevani
 
 LinkedIn: https://www.linkedin.com/in/sai-jeevani-kavuluri/
+
+## Application Screenshots
+
+Below are some screenshots of the Student Management System project, showcasing its user interface and application functionality.
+
+
+
+
