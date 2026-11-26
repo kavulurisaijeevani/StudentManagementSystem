@@ -224,6 +224,12 @@ LinkedIn: https://www.linkedin.com/in/sai-jeevani-kavuluri/
 
 Below are some screenshots of the Student Management System project, showcasing its user interface and application functionality.
 
+<img width="469" height="414" alt="Screenshot 2026-11-01 125421" src="https://github.com/user-attachments/assets/861fc9b0-c798-4d0c-bf3f-f1f4981bdbb1" />
+<img width="288" height="470" alt="Screenshot 2026-11-01 155620" src="https://github.com/user-attachments/assets/b91c392f-a573-454e-bb6f-fe4c195e1ab8" />
+<img width="959" height="488" alt="Screenshot 2026-11-03 172600" src="https://github.com/user-attachments/assets/c54e6e27-cc1b-473a-8bcb-b8bf05c79820" />
+<img width="513" height="492" alt="Screenshot 2026-11-03 172728" src="https://github.com/user-attachments/assets/8b86e73e-59bd-4dd8-ae7c-02af4ca42da9" />
+
+
 
 
 
